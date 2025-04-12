@@ -81,7 +81,13 @@ button {
 }
 
 /* divider */
-.dropdown-content {
+
+#controls select {
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* .dropdown-content {
   position: absolute;
   background-color: white;
   border: 1px solid #ccc;
@@ -100,4 +106,4 @@ button {
 
 .dropdown-content div:hover {
   background-color: #f1f1f1;
-}
+} */
