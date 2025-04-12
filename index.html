@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="data.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LA TV Shows | Catalog</title>
+  <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
-    </header>
+<body>
+  <header class="main-header">
+    <h1 class="title">LA TV Shows</h1>
+  </header>
 
-    <div id="controls">
-      <input type="text" id="searchInput" placeholder="Search shows..." oninput="handleSearch()">
-      <select id="categoryFilter" onchange="handleFilter()">
-        <option value="all">All Categories</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Drama">Drama</option>
-        <option value="Teen">Teen</option>
-      </select>
-      <button onclick="sortByName()">Sort by Name</button>
-      <button onclick="sortByPrice()">Sort by Price</button>
-    </div>
+  <div id="controls">
+    <input type="text" id="searchInput" placeholder="Search shows..." />
+    
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Drama">Drama</option>
+      <option value="Reality">Reality</option>
+    </select>
 
-    <div id="catalog"></div>
+    <select id="sortBy">
+      <option value="name">Sort by Name</option>
+      <option value="year">Sort by Year</option>
+      <option value="rating">Sort by Rating</option>
+    </select>
+  </div>
 
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
+  <div id="catalog"></div>
 
-    <script src="data.js"></script>
-    <script src="scripts.js"></script>
-  </body>
+  <footer class="footer">
+    <button onclick="alert('I guess I can kiss heaven goodbye, because it got to be a sin to look this good!')">
+      Get A Quote!
+    </button>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="scripts.js"></script>
+</body>
 </html>
