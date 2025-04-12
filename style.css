@@ -68,3 +68,35 @@ button {
   cursor: pointer;
   margin: 5px;
 }
+
+.dropdown-container {
+  position: relative;
+  width: 200px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown-content div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-content div:hover {
+  background-color: #f1f1f1;
+}
