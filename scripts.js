@@ -126,6 +126,56 @@ function handleSearch() {
   applySearchAndFilter();
 }
 
+// search and sort
+
+let filteredData = [...catalogData]; // Clone original data
+
+const catalogContainer = document.getElementById("catalog");
+const searchInput = document.getElementById("searchInput");
+
+function renderCatalog(data) {
+  catalogContainer.innerHTML = ""; // Clear previous content
+
+  data.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "item-card";
+
+    card.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <h2>${item.name}</h2>
+      <p>${item.description}</p>
+      <span>${item.price}</span>
+    `;
+
+    catalogContainer.appendChild(card);
+  });
+}
+
+function handleSearch() {
+  const query = searchInput.value.toLowerCase();
+
+  filteredData = catalogData.filter(item =>
+    item.name.toLowerCase().includes(query) ||
+    item.description.toLowerCase().includes(query)
+  );
+
+  renderCatalog(filteredData);
+}
+
+function sortByName() {
+  filteredData.sort((a, b) => a.name.localeCompare(b.name));
+  renderCatalog(filteredData);
+}
+
+function sortByPrice() {
+  filteredData.sort((a, b) => parseFloat(a.price.replace("$", "")) - parseFloat(b.price.replace("$", "")));
+  renderCatalog(filteredData);
+}
+
+// Initial render
+renderCatalog(filteredData);
+
+
 
 // dropdown search bar
 // const input = document.getElementById("searchInput");

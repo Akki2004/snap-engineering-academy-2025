@@ -81,11 +81,35 @@ button {
 }
 
 /* divider */
-
 #controls select {
   padding: 10px;
   border-radius: 4px;
 }
+
+#controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+#controls input {
+  flex: 1;
+  padding: 10px;
+}
+
+#controls button {
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+#controls button:hover {
+  background-color: #0056b3;
+}
+
 
 /* .dropdown-content {
   position: absolute;

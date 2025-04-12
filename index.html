@@ -41,6 +41,18 @@
       <button onclick="sortByPrice()">Sort by Price</button>
     </div>
   </header>
+    <h1>My Product Catalog</h1>
+  
+    <div id="controls">
+      <input type="text" id="searchInput" placeholder="Search items..." oninput="handleSearch()">
+      <button onclick="sortByName()">Sort by Name</button>
+      <button onclick="sortByPrice()">Sort by Price</button>
+    </div>
+  
+    <div id="catalog"></div>
+  
+    <script src="data.js"></script>
+    <script src="scripts.js"></script>  
     <!-- divider -->
     <!-- <div class="dropdown-container">
       <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterDropdown()">
