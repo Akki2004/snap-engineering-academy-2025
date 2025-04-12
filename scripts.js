@@ -96,31 +96,62 @@ function removeLastCard() {
   showCards(); // Call showCards again to refresh
 }
 
-// dropdown search bar
-const input = document.getElementById("searchInput");
-const dropdown = document.getElementById("dropdown");
+// filter
+const categoryFilter = document.getElementById("categoryFilter");
 
-function filterDropdown() {
-  const filter = input.value.toLowerCase();
-  const items = dropdown.getElementsByTagName("div");
-
-  let hasMatch = false;
-
-  for (let i = 0; i < items.length; i++) {
-    const txtValue = items[i].textContent || items[i].innerText;
-    if (txtValue.toLowerCase().includes(filter)) {
-      items[i].style.display = "";
-      hasMatch = true;
-    } else {
-      items[i].style.display = "none";
-    }
-  }
-
-  dropdown.style.display = hasMatch && filter ? "block" : "none";
+function handleFilter() {
+  applySearchAndFilter();
 }
 
-document.addEventListener("click", function (e) {
-  if (!document.querySelector(".dropdown-container").contains(e.target)) {
-    dropdown.style.display = "none";
-  }
-});
+function applySearchAndFilter() {
+  const query = searchInput.value.toLowerCase();
+  const selectedCategory = categoryFilter.value;
+
+  filteredData = catalogData.filter(item => {
+    const matchesSearch =
+      item.name.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query);
+
+    const matchesCategory =
+      selectedCategory === "all" || item.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  renderCatalog(filteredData);
+}
+
+// Update search to also apply filter
+function handleSearch() {
+  applySearchAndFilter();
+}
+
+
+// dropdown search bar
+// const input = document.getElementById("searchInput");
+// const dropdown = document.getElementById("dropdown");
+
+// function filterDropdown() {
+//   const filter = input.value.toLowerCase();
+//   const items = dropdown.getElementsByTagName("div");
+
+//   let hasMatch = false;
+
+//   for (let i = 0; i < items.length; i++) {
+//     const txtValue = items[i].textContent || items[i].innerText;
+//     if (txtValue.toLowerCase().includes(filter)) {
+//       items[i].style.display = "";
+//       hasMatch = true;
+//     } else {
+//       items[i].style.display = "none";
+//     }
+//   }
+
+//   dropdown.style.display = hasMatch && filter ? "block" : "none";
+// }
+
+// document.addEventListener("click", function (e) {
+//   if (!document.querySelector(".dropdown-container").contains(e.target)) {
+//     dropdown.style.display = "none";
+//   }
+// });

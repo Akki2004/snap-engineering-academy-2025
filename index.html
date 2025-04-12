@@ -28,7 +28,21 @@
       <button onclick="removeLastCard();">Remove A Card!</button>
     </div>
     <!-- divider -->
-    <div class="dropdown-container">
+    <div id="controls">
+      <input type="text" id="searchInput" placeholder="Search items..." oninput="handleSearch()">
+      
+      <select id="categoryFilter" onchange="handleFilter()">
+        <option value="all">All Categories</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Footwear">Footwear</option>
+        <option value="Accessories">Accessories</option>
+      </select>
+      
+      <button onclick="sortByName()">Sort by Name</button>
+      <button onclick="sortByPrice()">Sort by Price</button>
+    </div>
+    <!-- divider -->
+    <!-- <div class="dropdown-container">
       <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterDropdown()">
       <div id="dropdown" class="dropdown-content">
         <div>Apple</div>
@@ -39,7 +53,7 @@
         <div>Fig</div>
         <div>Grape</div>
       </div>
-    </div>
+    </div> -->
     <!-- divider -->    
   </body>
 </html>
