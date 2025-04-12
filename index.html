@@ -4,6 +4,7 @@
     <title>LA TV Shows | Home</title>
     <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
     <link rel="stylesheet" href="style.css" />
+    <script src="data.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
   </head>
 
@@ -11,61 +12,27 @@
     <header class="main-header">
       <h1 class="title">LA TV Shows</h1>
     </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
-    <!-- divider -->
-  <header>
+
     <div id="controls">
-      <input type="text" id="searchInput" placeholder="Search items..." oninput="handleSearch()">
+      <input type="text" id="searchInput" placeholder="Search shows..." oninput="handleSearch()">
       <select id="categoryFilter" onchange="handleFilter()">
         <option value="all">All Categories</option>
-        <option value="Clothing">Clothing</option>
-        <option value="Footwear">Footwear</option>
-        <option value="Accessories">Accessories</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Drama">Drama</option>
+        <option value="Teen">Teen</option>
       </select>
       <button onclick="sortByName()">Sort by Name</button>
       <button onclick="sortByPrice()">Sort by Price</button>
     </div>
-  </header>
-    <h1>My Product Catalog</h1>
-  
-    <div id="controls">
-      <input type="text" id="searchInput" placeholder="Search items..." oninput="handleSearch()">
-      <button onclick="sortByName()">Sort by Name</button>
-      <button onclick="sortByPrice()">Sort by Price</button>
-    </div>
-  
+
     <div id="catalog"></div>
-  
+
+    <div class="footer">
+      <button onclick="quoteAlert();">Get A Quote!</button>
+      <button onclick="removeLastCard();">Remove A Card!</button>
+    </div>
+
     <script src="data.js"></script>
-    <script src="scripts.js"></script>  
-    <!-- divider -->
-    <!-- <div class="dropdown-container">
-      <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterDropdown()">
-      <div id="dropdown" class="dropdown-content">
-        <div>Apple</div>
-        <div>Banana</div>
-        <div>Cherry</div>
-        <div>Dragonfruit</div>
-        <div>Elderberry</div>
-        <div>Fig</div>
-        <div>Grape</div>
-      </div>
-    </div> -->
-    <!-- divider -->    
+    <script src="scripts.js"></script>
   </body>
 </html>

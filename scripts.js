@@ -23,81 +23,38 @@
  *
  */
 
-const FRESH_PRINCE_URL =
-  "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg";
-const CURB_POSTER_URL =
-  "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg";
-const EAST_LOS_HIGH_POSTER_URL =
-  "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg";
+// Sample data import
+let filteredData = [...catalogData]; // Clone original data
 
-// This is an array of strings (TV show titles)
-let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-];
-// Your final submission should have much more data than this, and
-// you should use more than just an array of strings to store it all.
-
-// This function adds cards the page to display the data in the array
-function showCards() {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = "";
-  const templateCard = document.querySelector(".card");
-
-  for (let i = 0; i < titles.length; i++) {
-    let title = titles[i];
-
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }
-
-    const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
-    cardContainer.appendChild(nextCard); // Add new card to the container
-  }
-}
-
-function editCardContent(card, newTitle, newImageURL) {
-  card.style.display = "block";
-
-  const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
-
-  const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
-
-  // You can use console.log to help you debug!
-  // View the output by right clicking on your website,
-  // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
-}
-
-// This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
-
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-}
-
-function removeLastCard() {
-  titles.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
-}
-
-// filter
+const catalogContainer = document.getElementById("catalog");
+const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
+
+function renderCatalog(data) {
+  catalogContainer.innerHTML = "";
+  data.forEach((item) => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="card-content">
+        <h2>${item.name}</h2>
+        <img src="${item.image}" alt="${item.name} Poster" />
+        <ul>
+          <li>${item.description}</li>
+          <li>Genre: ${item.category}</li>
+          <li>Price: ${item.price}</li>
+        </ul>
+      </div>
+    `;
+
+    catalogContainer.appendChild(card);
+  });
+}
+
+function handleSearch() {
+  applySearchAndFilter();
+}
 
 function handleFilter() {
   applySearchAndFilter();
@@ -107,7 +64,7 @@ function applySearchAndFilter() {
   const query = searchInput.value.toLowerCase();
   const selectedCategory = categoryFilter.value;
 
-  filteredData = catalogData.filter(item => {
+  filteredData = catalogData.filter((item) => {
     const matchesSearch =
       item.name.toLowerCase().includes(query) ||
       item.description.toLowerCase().includes(query);
@@ -121,87 +78,30 @@ function applySearchAndFilter() {
   renderCatalog(filteredData);
 }
 
-// Update search to also apply filter
-function handleSearch() {
-  applySearchAndFilter();
-}
-
-// search and sort
-
-let filteredData = [...catalogData]; // Clone original data
-
-const catalogContainer = document.getElementById("catalog");
-const searchInput = document.getElementById("searchInput");
-
-function renderCatalog(data) {
-  catalogContainer.innerHTML = ""; // Clear previous content
-
-  data.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "item-card";
-
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
-      <h2>${item.name}</h2>
-      <p>${item.description}</p>
-      <span>${item.price}</span>
-    `;
-
-    catalogContainer.appendChild(card);
-  });
-}
-
-function handleSearch() {
-  const query = searchInput.value.toLowerCase();
-
-  filteredData = catalogData.filter(item =>
-    item.name.toLowerCase().includes(query) ||
-    item.description.toLowerCase().includes(query)
-  );
-
-  renderCatalog(filteredData);
-}
-
 function sortByName() {
   filteredData.sort((a, b) => a.name.localeCompare(b.name));
   renderCatalog(filteredData);
 }
 
 function sortByPrice() {
-  filteredData.sort((a, b) => parseFloat(a.price.replace("$", "")) - parseFloat(b.price.replace("$", "")));
+  filteredData.sort(
+    (a, b) =>
+      parseFloat(a.price.replace("$", "")) -
+      parseFloat(b.price.replace("$", ""))
+  );
+  renderCatalog(filteredData);
+}
+
+function quoteAlert() {
+  alert("I guess I can kiss heaven goodbye, because it got to be a sin to look this good!");
+}
+
+function removeLastCard() {
+  filteredData.pop();
   renderCatalog(filteredData);
 }
 
 // Initial render
-renderCatalog(filteredData);
-
-
-
-// dropdown search bar
-// const input = document.getElementById("searchInput");
-// const dropdown = document.getElementById("dropdown");
-
-// function filterDropdown() {
-//   const filter = input.value.toLowerCase();
-//   const items = dropdown.getElementsByTagName("div");
-
-//   let hasMatch = false;
-
-//   for (let i = 0; i < items.length; i++) {
-//     const txtValue = items[i].textContent || items[i].innerText;
-//     if (txtValue.toLowerCase().includes(filter)) {
-//       items[i].style.display = "";
-//       hasMatch = true;
-//     } else {
-//       items[i].style.display = "none";
-//     }
-//   }
-
-//   dropdown.style.display = hasMatch && filter ? "block" : "none";
-// }
-
-// document.addEventListener("click", function (e) {
-//   if (!document.querySelector(".dropdown-container").contains(e.target)) {
-//     dropdown.style.display = "none";
-//   }
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  renderCatalog(filteredData);
+});
