@@ -23,83 +23,57 @@
  *
  */
 
-let filteredData = [...catalogData];
+document.addEventListener("DOMContentLoaded", () => {
+  // Get elements only after DOM is loaded
+  const searchInput = document.getElementById("searchInput");
+  const categoryFilter = document.getElementById("categoryFilter");
+  const catalogContainer = document.getElementById("catalog");
 
-const catalogContainer = document.getElementById("catalog");
-const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
-const sortBySelect = document.getElementById("sortBy");
+  let filteredData = [...tvShows]; // Make sure tvShows exists from data.js
 
-function renderCatalog(data) {
-  catalogContainer.innerHTML = "";
+  // Function to render the catalog (list of TV shows)
+  function renderCatalog(data) {
+    catalogContainer.innerHTML = ""; // Clear previous content
 
-  data.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "item-card";
-
-    card.innerHTML = `
-      <img src="${item.image}" alt="${item.name}">
-      <h2>${item.name}</h2>
-      <p>${item.description}</p>
-      <p>Category: ${item.category}</p>
-      <p>Year: ${item.year}</p>
-      <p>Rating: ${item.rating}</p>
-    `;
-
-    catalogContainer.appendChild(card);
-  });
-}
-
-function applySearchAndFilter() {
-  const query = searchInput.value.toLowerCase();
-  const selectedCategory = categoryFilter.value;
-
-  filteredData = catalogData.filter(item => {
-    const matchesSearch =
-      item.name.toLowerCase().includes(query) ||
-      item.description.toLowerCase().includes(query);
-
-    const matchesCategory =
-      selectedCategory === "all" || item.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
-  });
-
-  applySort();
-}
-
-function handleSearch() {
-  applySearchAndFilter();
-}
-
-function handleFilter() {
-  applySearchAndFilter();
-}
-
-function handleSortChange() {
-  applySort();
-}
-
-function applySort() {
-  const sortBy = sortBySelect.value;
-
-  if (sortBy === "name") {
-    filteredData.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortBy === "year") {
-    filteredData.sort((a, b) => a.year - b.year);
-  } else if (sortBy === "rating") {
-    filteredData.sort((a, b) => b.rating - a.rating); // Higher rating first
+    data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "item-card";
+      card.innerHTML = `
+        <img src="${item.poster}" alt="${item.title}">
+        <div class="card-content">
+          <h2>${item.title}</h2>
+          <ul>${item.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+          <p><strong>Category:</strong> ${item.category}</p>
+          <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+        </div>
+      `;
+      catalogContainer.appendChild(card);
+    });
   }
 
-  renderCatalog(filteredData);
-}
+  // Function to apply both search and filter
+  function applySearchAndFilter() {
+    const query = searchInput.value.toLowerCase();
+    const selectedCategory = categoryFilter.value;
 
-// Event Listeners
-document.addEventListener("DOMContentLoaded", () => {
-  renderCatalog(filteredData);
+    filteredData = tvShows.filter(item => {
+      const matchesSearch =
+        item.title.toLowerCase().includes(query) ||
+        item.bullets.some(b => b.toLowerCase().includes(query));
+
+      const matchesCategory =
+        selectedCategory === "all" || item.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+
+    renderCatalog(filteredData);
+  }
+
+  // Event listeners
+  searchInput.addEventListener("input", applySearchAndFilter);
+  categoryFilter.addEventListener("change", applySearchAndFilter);
+
+  // Initial render of the catalog
+  renderCatalog(tvShows);
 });
-
-searchInput.addEventListener("input", handleSearch);
-categoryFilter.addEventListener("change", handleFilter);
-sortBySelect.addEventListener("change", handleSortChange);
-
