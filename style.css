@@ -80,6 +80,7 @@ button {
   box-sizing: border-box;
 }
 
+/* divider */
 .dropdown-content {
   position: absolute;
   background-color: white;
