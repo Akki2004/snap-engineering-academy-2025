@@ -1,4 +1,4 @@
-const tsShows = [
+const tvShows = [
     {
       name: "Fresh Prince of Bel Air",
       image: "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg",
