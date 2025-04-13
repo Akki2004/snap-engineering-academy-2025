@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderCatalog(data) {
     catalogContainer.innerHTML = "";
-
+  
     data.forEach(item => {
       const card = document.createElement("div");
-      card.className = "card"; // CSS class matches your style.css
+      card.className = "card";
       card.innerHTML = `
         <div class="card-content">
           <h2>${item.name}</h2>
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       catalogContainer.appendChild(card);
     });
   }
+  
 
   function applyFilters() {
     const query = searchInput.value.toLowerCase();
