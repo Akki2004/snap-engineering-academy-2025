@@ -24,56 +24,66 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Get elements only after DOM is loaded
   const searchInput = document.getElementById("searchInput");
   const categoryFilter = document.getElementById("categoryFilter");
+  const sortBy = document.getElementById("sortBy");
   const catalogContainer = document.getElementById("catalog");
 
-  let filteredData = [...tvShows]; // Make sure tvShows exists from data.js
-
-  // Function to render the catalog (list of TV shows)
   function renderCatalog(data) {
-    catalogContainer.innerHTML = ""; // Clear previous content
+    catalogContainer.innerHTML = "";
 
     data.forEach(item => {
       const card = document.createElement("div");
-      card.className = "item-card";
+      card.className = "card"; // CSS class matches your style.css
       card.innerHTML = `
-        <img src="${item.poster}" alt="${item.title}">
         <div class="card-content">
-          <h2>${item.title}</h2>
-          <ul>${item.bullets.map(b => `<li>${b}</li>`).join("")}</ul>
+          <h2>${item.name}</h2>
+          <img src="${item.image}" alt="${item.name}">
+          <p>${item.description}</p>
           <p><strong>Category:</strong> ${item.category}</p>
-          <p><strong>Price:</strong> $${item.price.toFixed(2)}</p>
+          <p><strong>Year:</strong> ${item.year}</p>
+          <p><strong>Rating:</strong> ${item.rating}</p>
         </div>
       `;
       catalogContainer.appendChild(card);
     });
   }
 
-  // Function to apply both search and filter
-  function applySearchAndFilter() {
+  function applyFilters() {
     const query = searchInput.value.toLowerCase();
     const selectedCategory = categoryFilter.value;
+    const sortOption = sortBy.value;
 
-    filteredData = tvShows.filter(item => {
-      const matchesSearch =
-        item.title.toLowerCase().includes(query) ||
-        item.bullets.some(b => b.toLowerCase().includes(query));
+    let filtered = tvShows.filter(item => {
+      const matchesSearch = item.name.toLowerCase().includes(query) ||
+                            item.description.toLowerCase().includes(query);
 
-      const matchesCategory =
-        selectedCategory === "all" || item.category === selectedCategory;
+      const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
 
       return matchesSearch && matchesCategory;
     });
 
-    renderCatalog(filteredData);
+    // Sort logic
+    filtered.sort((a, b) => {
+      if (sortOption === "name") {
+        return a.name.localeCompare(b.name);
+      } else if (sortOption === "year") {
+        return b.year - a.year;
+      } else if (sortOption === "rating") {
+        return b.rating - a.rating;
+      }
+      return 0;
+    });
+
+    renderCatalog(filtered);
   }
 
   // Event listeners
-  searchInput.addEventListener("input", applySearchAndFilter);
-  categoryFilter.addEventListener("change", applySearchAndFilter);
+  searchInput.addEventListener("input", applyFilters);
+  categoryFilter.addEventListener("change", applyFilters);
+  sortBy.addEventListener("change", applyFilters);
 
-  // Initial render of the catalog
+  // Initial render
   renderCatalog(tvShows);
 });
+
