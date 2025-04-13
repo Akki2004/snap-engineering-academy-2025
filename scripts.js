@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       catalogContainer.appendChild(card);
     });
-  }
+  }  
   
 
   function applyFilters() {
