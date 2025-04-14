@@ -1,7 +1,7 @@
 const tvShows = [
     {
       name: "Fresh Prince of Bel Air",
-      image: "https://upload.wikimedia.org/wikipedia/en/3/33/Fresh_Prince_S1_DVD.jpg",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/Pink-Floyd-Dark-Side-of-the-Moon.jpg?w=1280",
       description: "A street-smart teenager from West Philadelphia is sent to live with his wealthy relatives in Bel-Air.",
       category: "Comedy",
       year: 1990,
