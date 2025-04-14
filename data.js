@@ -147,7 +147,7 @@ const albumCovers = [
       name: "Californication",
       image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-90s-40.jpg",
       artist: "Red Hot Chili Peppers",
-      category: "Drama",
+      category: "Rock",
       year: 1999,
       rating: 8.1
     },
