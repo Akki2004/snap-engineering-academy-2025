@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sortBy = document.getElementById("sortBy");
   const catalogContainer = document.getElementById("catalog");
 
-  let filteredData = [...tvShows];
+  let filteredData = [...albumCovers];
 
   // Create suggestions
   function updateSuggestions(query) {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const matches = tvShows
+    const matches = albumCovers
       .filter(show => show.name.toLowerCase().includes(query.toLowerCase()))
       .slice(0, 5);
 
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${show.image}" alt="${show.name}" />
         <div class="card-content">
           <h2>${show.name}</h2>
-          <p>${show.description}</p>
+          <p>${show.artist}</p>
           <p><strong>Category:</strong> ${show.category}</p>
           <p><strong>Year:</strong> ${show.year}</p>
           <p><strong>Rating:</strong> ${show.rating}</p>
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const category = categoryFilter.value;
     const sortKey = sortBy.value;
 
-    filteredData = tvShows.filter(show => {
+    filteredData = albumCovers.filter(show => {
       const matchesCategory = category === "all" || show.category === category;
       const matchesSearch = show.name.toLowerCase().includes(query);
       return matchesCategory && matchesSearch;
@@ -122,5 +122,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Initial load
-  renderCatalog(tvShows);
+  renderCatalog(albumCovers);
 });
