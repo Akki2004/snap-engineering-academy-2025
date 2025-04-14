@@ -30,14 +30,6 @@ const tvShows = [
       category: "Drama",
       year: 2016,
       rating: 8.1
-    },
-    {
-      name: "Lucifer",
-      image: "https://upload.wikimedia.org/wikipedia/en/9/9e/Lucifer_TV_series_season_3_poster.jpg",
-      description: "Lucifer Morningstar, the Devil, relocates to Los Angeles and opens a nightclub.",
-      category: "Fantasy",
-      year: 2016,
-      rating: 8.1
     }
   ];
   
