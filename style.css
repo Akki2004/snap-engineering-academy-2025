@@ -121,3 +121,25 @@ body {
 .footer button:hover {
   background-color: #444;
 }
+
+.suggestions-list {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  font-family: Verdana;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.suggestions-list div {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions-list div:hover {
+  background-color: #f0f0f0;
+}

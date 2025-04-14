@@ -88,3 +88,34 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCatalog(tvShows);
 });
 
+const suggestionsBox = document.getElementById("suggestions");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+
+  if (query.length === 0) return;
+
+  const matches = tvShows
+    .map(show => show.name)
+    .filter(name => name.toLowerCase().includes(query))
+    .slice(0, 5); // limit suggestions to 5
+
+  matches.forEach(match => {
+    const suggestion = document.createElement("div");
+    suggestion.textContent = match;
+    suggestion.addEventListener("click", () => {
+      searchInput.value = match;
+      suggestionsBox.innerHTML = "";
+      applySearchAndFilter(); // trigger filtering
+    });
+    suggestionsBox.appendChild(suggestion);
+  });
+});
+
+// Optional: hide suggestions when clicking outside
+document.addEventListener("click", e => {
+  if (!document.getElementById("controls").contains(e.target)) {
+    suggestionsBox.innerHTML = "";
+  }
+});

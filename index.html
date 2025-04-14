@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LA TV Shows | Catalog</title>
-  <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
+  <title>Album Covers | Catalog</title>
+  <meta name="description" content="A Catalog of Album Covers" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header class="main-header">
-    <h1 class="title">LA TV Shows</h1>
+    <h1 class="title">Album Covers</h1>
   </header>
 
   <div id="controls">
-    <input type="text" id="searchInput" placeholder="Search shows..." />
+    <input type="text" id="searchInput" placeholder="Search shows..." autocomplete="off" />
+    <div id="suggestions" class="suggestions-list"></div>
     
     <select id="categoryFilter">
       <option value="all">All Categories</option>
@@ -33,9 +34,6 @@
   <div id="catalog"></div>
 
   <footer class="footer">
-    <button onclick="alert('I guess I can kiss heaven goodbye, because it got to be a sin to look this good!')">
-      Get A Quote!
-    </button>
   </footer>
 
   <script src="data.js"></script>
