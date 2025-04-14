@@ -14,23 +14,25 @@
   </header>
 
   <div id="controls">
-    <input type="text" id="searchInput" placeholder="Search shows..." autocomplete="off" />
-    <div id="suggestions" class="suggestions-list"></div>
-    
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="Search shows..." />
+      <ul id="suggestions"></ul>
+    </div>
+  
     <select id="categoryFilter">
       <option value="all">All Categories</option>
       <option value="Comedy">Comedy</option>
       <option value="Drama">Drama</option>
       <option value="Reality">Reality</option>
     </select>
-
+  
     <select id="sortBy">
       <option value="name">Sort by Name</option>
       <option value="year">Sort by Year</option>
       <option value="rating">Sort by Rating</option>
     </select>
   </div>
-
+  
   <div id="catalog"></div>
 
   <footer class="footer">

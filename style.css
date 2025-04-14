@@ -119,16 +119,34 @@ body {
   background-color: #444;
 }
 
-/* Autocomplete Suggestions */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Suggestions dropdown */
 #suggestions {
   position: absolute;
+  top: 100%; /* places it directly below input */
+  left: 0;
+  right: 0;
   background-color: white;
   border: 1px solid #ccc;
-  width: 250px;
+  border-top: none;
   max-height: 200px;
   overflow-y: auto;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  margin-top: 2px;
+  display: none; /* start hidden */
 }
 
 #suggestions li {

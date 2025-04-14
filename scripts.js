@@ -25,26 +25,58 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
+  const suggestionsList = document.getElementById("suggestions");
   const categoryFilter = document.getElementById("categoryFilter");
   const sortBy = document.getElementById("sortBy");
   const catalogContainer = document.getElementById("catalog");
 
   let filteredData = [...tvShows];
 
+  // Create suggestions
+  function updateSuggestions(query) {
+    suggestionsList.innerHTML = "";
+    if (!query) {
+      suggestionsList.style.display = "none";
+      return;
+    }
+
+    const matches = tvShows
+      .filter(show => show.name.toLowerCase().includes(query.toLowerCase()))
+      .slice(0, 5);
+
+    if (matches.length === 0) {
+      suggestionsList.style.display = "none";
+      return;
+    }
+
+    matches.forEach(show => {
+      const li = document.createElement("li");
+      li.textContent = show.name;
+      li.addEventListener("click", () => {
+        searchInput.value = show.name;
+        suggestionsList.style.display = "none";
+        applyFilters();
+      });
+      suggestionsList.appendChild(li);
+    });
+
+    suggestionsList.style.display = "block";
+  }
+
+  // Render the catalog
   function renderCatalog(data) {
     catalogContainer.innerHTML = "";
-
-    data.forEach(item => {
+    data.forEach(show => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-        <img src="${item.image}" alt="${item.name}">
+        <img src="${show.image}" alt="${show.name}" />
         <div class="card-content">
-          <h2>${item.name}</h2>
-          <p>${item.description}</p>
-          <p><strong>Category:</strong> ${item.category}</p>
-          <p><strong>Year:</strong> ${item.year}</p>
-          <p><strong>Rating:</strong> ${item.rating}</p>
+          <h2>${show.name}</h2>
+          <p>${show.description}</p>
+          <p><strong>Category:</strong> ${show.category}</p>
+          <p><strong>Year:</strong> ${show.year}</p>
+          <p><strong>Rating:</strong> ${show.rating}</p>
         </div>
       `;
       catalogContainer.appendChild(card);
@@ -53,68 +85,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function applyFilters() {
     const query = searchInput.value.toLowerCase();
-    const selectedCategory = categoryFilter.value;
+    const category = categoryFilter.value;
     const sortKey = sortBy.value;
 
     filteredData = tvShows.filter(show => {
+      const matchesCategory = category === "all" || show.category === category;
       const matchesSearch = show.name.toLowerCase().includes(query);
-      const matchesCategory = selectedCategory === "all" || show.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+      return matchesCategory && matchesSearch;
     });
 
-    // Sort
-    filteredData.sort((a, b) => {
-      if (sortKey === "name") return a.name.localeCompare(b.name);
-      if (sortKey === "year") return a.year - b.year;
-      if (sortKey === "rating") return b.rating - a.rating;
-    });
+    if (sortKey === "name") {
+      filteredData.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortKey === "year") {
+      filteredData.sort((a, b) => a.year - b.year);
+    } else if (sortKey === "rating") {
+      filteredData.sort((a, b) => b.rating - a.rating);
+    }
 
     renderCatalog(filteredData);
-    renderSuggestions(query);
   }
 
-  function renderSuggestions(query) {
-    let suggestionBox = document.getElementById("suggestionBox");
-    if (!suggestionBox) {
-      suggestionBox = document.createElement("div");
-      suggestionBox.id = "suggestionBox";
-      suggestionBox.style.position = "absolute";
-      suggestionBox.style.background = "white";
-      suggestionBox.style.border = "1px solid #ccc";
-      suggestionBox.style.zIndex = 999;
-      suggestionBox.style.maxHeight = "150px";
-      suggestionBox.style.overflowY = "auto";
-      searchInput.parentNode.appendChild(suggestionBox);
-    }
+  // Event listeners
+  searchInput.addEventListener("input", () => {
+    updateSuggestions(searchInput.value);
+    applyFilters();
+  });
 
-    if (!query) {
-      suggestionBox.innerHTML = "";
-      return;
-    }
-
-    const suggestions = tvShows
-      .map(show => show.name)
-      .filter(name => name.toLowerCase().includes(query) && name.toLowerCase() !== query)
-      .slice(0, 5);
-
-    suggestionBox.innerHTML = suggestions
-      .map(s => `<div class="suggestion-item" style="padding: 5px; cursor: pointer;">${s}</div>`) 
-      .join("");
-
-    suggestionBox.querySelectorAll(".suggestion-item").forEach(item => {
-      item.addEventListener("click", () => {
-        searchInput.value = item.textContent;
-        suggestionBox.innerHTML = "";
-        applyFilters();
-      });
-    });
-  }
-
-  // Attach event listeners
-  searchInput.addEventListener("input", applyFilters);
   categoryFilter.addEventListener("change", applyFilters);
   sortBy.addEventListener("change", applyFilters);
 
-  // Initial render
+  // Hide suggestions when clicking outside
+  document.addEventListener("click", event => {
+    if (!document.querySelector(".search-wrapper").contains(event.target)) {
+      suggestionsList.style.display = "none";
+    }
+  });
+
+  // Initial load
   renderCatalog(tvShows);
 });
