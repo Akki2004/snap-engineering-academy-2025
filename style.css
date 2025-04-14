@@ -125,36 +125,52 @@ body {
   width: 250px;
 }
 
+/* Container for the search bar and dropdown */
+.search-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+}
+
+/* Search input styling */
 #searchInput {
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
   box-sizing: border-box;
 }
 
 /* Suggestions dropdown */
 #suggestions {
   position: absolute;
-  top: 100%; /* Directly below the input */
+  top: 100%;
   left: 0;
   right: 0;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #ccc;
-  border-top: none;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  margin-top: 2px;
-}
-
-#suggestions li {
-  padding: 10px;
-  cursor: pointer;
+  border-radius: 0 0 8px 8px;
+  margin-top: 4px;
+  padding: 0;
   list-style: none;
+  max-height: 220px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  display: none;
 }
 
+/* Individual suggestion item */
+#suggestions li {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect */
 #suggestions li:hover {
-  background-color: #f0f0f0;
+  background-color: #f3f3f3;
+  border-left: 4px solid #007bff;
 }
-
