@@ -73,7 +73,7 @@ const albumCovers = [
     },
     {
       name: "What's Going On",
-      image: "https://en.wikipedia.org/wiki/What%27s_Going_On_%28album%29#/media/File:MarvinGayeWhat'sGoingOnalbumcover.jpg",
+      image: "https://d.newsweek.com/en/full/1802884/marvin-gayes-whats-going-turns-50.webp?w=1400&f=22539f0720466329c802e793e9235e4c",
       artist: "Marvin Gaye",
       category: "R&B",
       year: 1971,
@@ -153,7 +153,7 @@ const albumCovers = [
     },
     {
       name: "In Utero",
-      image: "https://en.wikipedia.org/wiki/In_Utero#/media/File:In_Utero_(Nirvana)_album_cover.jpg",
+      image: "https://lastfm.freetls.fastly.net/i/u/770x0/b897255bf422baa93a42536af293f9f8.jpg#b897255bf422baa93a42536af293f9f8",
       artist: "Nirvana",
       category: "Rock",
       year: 1993,
@@ -168,19 +168,19 @@ const albumCovers = [
       rating: 8.1
     },
     {
-      name: "Merriweather Post Pavilion",
-      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2000s-04.jpg",
-      artist: "Animal Collective",
-      category: "Pop",
-      year: 2009,
+      name: "Speaking in Tongue",
+      image: "https://indieground.net/wp-content/uploads/2013/05/indieblog-best-album-covers-80s-16-1024x1024.jpg",
+      artist: "Talking Heads",
+      category: "Rock",
+      year: 1983,
       rating: 8.1
     },
     {
-      name: "Merriweather Post Pavilion",
-      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2000s-04.jpg",
-      artist: "Animal Collective",
-      category: "Pop",
-      year: 2009,
+      name: "Ok Computer",
+      image: "https://indieground.net/wp-content/uploads/2013/06/indieblog-best-album-covers-90s-13.jpg",
+      artist: "Radiohead",
+      category: "Rock",
+      year: 1997,
       rating: 8.1
     },
     {
