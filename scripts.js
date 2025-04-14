@@ -29,16 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const sortBy = document.getElementById("sortBy");
   const catalogContainer = document.getElementById("catalog");
 
+  let filteredData = [...tvShows];
+
   function renderCatalog(data) {
     catalogContainer.innerHTML = "";
-  
+
     data.forEach(item => {
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
         <div class="card-content">
           <h2>${item.name}</h2>
-          <img src="${item.image}" alt="${item.name}">
           <p>${item.description}</p>
           <p><strong>Category:</strong> ${item.category}</p>
           <p><strong>Year:</strong> ${item.year}</p>
@@ -47,75 +49,72 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       catalogContainer.appendChild(card);
     });
-  }  
-  
+  }
 
   function applyFilters() {
     const query = searchInput.value.toLowerCase();
     const selectedCategory = categoryFilter.value;
-    const sortOption = sortBy.value;
+    const sortKey = sortBy.value;
 
-    let filtered = tvShows.filter(item => {
-      const matchesSearch = item.name.toLowerCase().includes(query) ||
-                            item.description.toLowerCase().includes(query);
-
-      const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
-
+    filteredData = tvShows.filter(show => {
+      const matchesSearch = show.name.toLowerCase().includes(query);
+      const matchesCategory = selectedCategory === "all" || show.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
 
-    // Sort logic
-    filtered.sort((a, b) => {
-      if (sortOption === "name") {
-        return a.name.localeCompare(b.name);
-      } else if (sortOption === "year") {
-        return b.year - a.year;
-      } else if (sortOption === "rating") {
-        return b.rating - a.rating;
-      }
-      return 0;
+    // Sort
+    filteredData.sort((a, b) => {
+      if (sortKey === "name") return a.name.localeCompare(b.name);
+      if (sortKey === "year") return a.year - b.year;
+      if (sortKey === "rating") return b.rating - a.rating;
     });
 
-    renderCatalog(filtered);
+    renderCatalog(filteredData);
+    renderSuggestions(query);
   }
 
-  // Event listeners
+  function renderSuggestions(query) {
+    let suggestionBox = document.getElementById("suggestionBox");
+    if (!suggestionBox) {
+      suggestionBox = document.createElement("div");
+      suggestionBox.id = "suggestionBox";
+      suggestionBox.style.position = "absolute";
+      suggestionBox.style.background = "white";
+      suggestionBox.style.border = "1px solid #ccc";
+      suggestionBox.style.zIndex = 999;
+      suggestionBox.style.maxHeight = "150px";
+      suggestionBox.style.overflowY = "auto";
+      searchInput.parentNode.appendChild(suggestionBox);
+    }
+
+    if (!query) {
+      suggestionBox.innerHTML = "";
+      return;
+    }
+
+    const suggestions = tvShows
+      .map(show => show.name)
+      .filter(name => name.toLowerCase().includes(query) && name.toLowerCase() !== query)
+      .slice(0, 5);
+
+    suggestionBox.innerHTML = suggestions
+      .map(s => `<div class="suggestion-item" style="padding: 5px; cursor: pointer;">${s}</div>`) 
+      .join("");
+
+    suggestionBox.querySelectorAll(".suggestion-item").forEach(item => {
+      item.addEventListener("click", () => {
+        searchInput.value = item.textContent;
+        suggestionBox.innerHTML = "";
+        applyFilters();
+      });
+    });
+  }
+
+  // Attach event listeners
   searchInput.addEventListener("input", applyFilters);
   categoryFilter.addEventListener("change", applyFilters);
   sortBy.addEventListener("change", applyFilters);
 
   // Initial render
   renderCatalog(tvShows);
-});
-
-const suggestionsBox = document.getElementById("suggestions");
-
-searchInput.addEventListener("input", () => {
-  const query = searchInput.value.toLowerCase();
-  suggestionsBox.innerHTML = "";
-
-  if (query.length === 0) return;
-
-  const matches = tvShows
-    .map(show => show.name)
-    .filter(name => name.toLowerCase().includes(query))
-    .slice(0, 5); // limit suggestions to 5
-
-  matches.forEach(match => {
-    const suggestion = document.createElement("div");
-    suggestion.textContent = match;
-    suggestion.addEventListener("click", () => {
-      searchInput.value = match;
-      suggestionsBox.innerHTML = "";
-      applySearchAndFilter(); // trigger filtering
-    });
-    suggestionsBox.appendChild(suggestion);
-  });
-});
-
-// Optional: hide suggestions when clicking outside
-document.addEventListener("click", e => {
-  if (!document.getElementById("controls").contains(e.target)) {
-    suggestionsBox.innerHTML = "";
-  }
 });
