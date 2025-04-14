@@ -8,27 +8,187 @@ const albumCovers = [
       rating: 8.0
     },
     {
-      name: "Curb Your Enthusiasm",
-      image: "https://m.media-amazon.com/images/M/MV5BZDY1ZGM4OGItMWMyNS00MDAyLWE2Y2MtZTFhMTU0MGI5ZDFlXkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg",
-      artist: "The life and times of Larry David and the predicaments he gets himself into with his friends and complete strangers.",
-      category: "Comedy",
-      year: 2000,
+      name: "The Velvet Underground & Nico",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/Velvet-Undergound-Velvet-Underground-and-Nico.jpg?w=1280",
+      artist: "The Velvet Underground",
+      category: "Rock",
+      year: 1967,
       rating: 8.8
     },
     {
-      name: "East Los High",
-      image: "https://static.wikia.nocookie.net/hulu/images/6/64/East_Los_High.jpg",
-      artist: "A group of Latino teens navigate life at an East Los Angeles high school.",
-      category: "Drama",
-      year: 2013,
+      name: "To Pimp a Butterfly",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/Kendrick-Lamar-To-Pimp-a-Butterfly.jpg?w=1280",
+      artist: "Kendrick Lamar",
+      category: "Hip-Hop",
+      year: 2015,
       rating: 7.1
     },
     {
-      name: "Insecure",
-      image: "https://upload.wikimedia.org/wikipedia/en/2/2e/Insecure_%28TV_series%29.png",
-      artist: "Follows the awkward experiences and racy tribulations of a modern-day African-American woman.",
-      category: "Drama",
+      name: "Stankonia",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/Outkast-Stankonia.jpg?w=1280",
+      artist: "Outkast",
+      category: "Hip-Hop",
+      year: 2000,
+      rating: 8.1
+    },
+    {
+      name: "Rumours",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/Fleetwood-Mac-Rumours.jpg?w=1280",
+      artist: "Fleetwood Mac",
+      category: "Rock",
+      year: 1977,
+      rating: 8.1
+    },
+    {
+      name: "SOS",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/SZA-SOS.jpg?w=1280",
+      artist: "SZA",
+      category: "R&B",
+      year: 2022,
+      rating: 8.1
+    },
+    {
+      name: "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
+      image: "https://www.rollingstone.com/wp-content/uploads/2024/06/David-Bowie-Ziggy.jpg?w=1280",
+      artist: "David Bowie",
+      category: "Rock",
+      year: 1972,
+      rating: 8.1
+    },
+    {
+      name: "The College Dropout",
+      image: "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
+      artist: "Kanye West",
+      category: "Hip-Hop",
+      year: 2004,
+      rating: 8.1
+    },
+    {
+      name: "Channel Orange",
+      image: "https://upload.wikimedia.org/wikipedia/en/2/28/Channel_ORANGE.jpg",
+      artist: "Frank Ocean",
+      category: "R&B",
+      year: 2012,
+      rating: 8.1
+    },
+    {
+      name: "What's Going On",
+      image: "https://en.wikipedia.org/wiki/What%27s_Going_On_%28album%29#/media/File:MarvinGayeWhat'sGoingOnalbumcover.jpg",
+      artist: "Marvin Gaye",
+      category: "R&B",
+      year: 1971,
+      rating: 8.1
+    },
+    {
+      name: "In the Court of the Crimson King",
+      image: "https://ia601507.us.archive.org/11/items/KingCrimsonIntheCourtoftheCrimsonKing/In%20the%20Court%20of%20the%20Crimson%20King%20%28An%20Observation%20by%20King%20Crimson%29.png",
+      artist: "King Crimson",
+      category: "Rock",
+      year: 1969,
+      rating: 8.1
+    },
+    {
+      name: "Currents",
+      image: "https://ia801009.us.archive.org/13/items/TameImpalaCurrents/%21Currents.png",
+      artist: "Tame Impala",
+      category: "Pop",
+      year: 2015,
+      rating: 8.1
+    },
+    {
+      name: "Lemonade",
+      image: "https://www.billboard.com/wp-content/uploads/2022/06/beyonce-Lemonade-album-art-billboard-1240.jpg?w=1024",
+      artist: "Beyoncé",
+      category: "R&B",
       year: 2016,
+      rating: 8.1
+    },
+    {
+      name: "Igor",
+      image: "https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=1024",
+      artist: "Tyler the Creator",
+      category: "Hip-Hop",
+      year: 2019,
+      rating: 8.1
+    },
+    {
+      name: "Elephant",
+      image: "https://www.billboard.com/wp-content/uploads/2023/07/the-white-stripes-elephant-cover-2003-billboard-1240.jpg?w=1024",
+      artist: "The White Stripes",
+      category: "Rock",
+      year: 2003,
+      rating: 8.1
+    },
+    {
+      name: "1989",
+      image: "https://www.billboard.com/wp-content/uploads/2022/03/50.-Taylor-Swift-%E2%80%981989-2014-album-art-billboard-1240.jpg?w=1024",
+      artist: "Taylor Swift",
+      category: "Pop",
+      year: 2000,
+      rating: 8.1
+    },
+    {
+      name: "Abbey Road",
+      image: "https://www.billboard.com/wp-content/uploads/2022/03/2.-The-Beatles-%E2%80%98Abbey-Road-1969-album-art-billboard-1240.jpg?w=1024",
+      artist: "The Beatles",
+      category: "Rock",
+      year: 1969,
+      rating: 8.1
+    },
+    {
+      name: "Post",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-90s-05.jpg",
+      artist: "Björk",
+      category: "Pop",
+      year: 1995,
+      rating: 8.1
+    },
+    {
+      name: "Californication",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-90s-40.jpg",
+      artist: "Red Hot Chili Peppers",
+      category: "Drama",
+      year: 1999,
+      rating: 8.1
+    },
+    {
+      name: "In Utero",
+      image: "https://en.wikipedia.org/wiki/In_Utero#/media/File:In_Utero_(Nirvana)_album_cover.jpg",
+      artist: "Nirvana",
+      category: "Rock",
+      year: 1993,
+      rating: 8.1
+    },
+    {
+      name: "Merriweather Post Pavilion",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2000s-04.jpg",
+      artist: "Animal Collective",
+      category: "Pop",
+      year: 2009,
+      rating: 8.1
+    },
+    {
+      name: "Merriweather Post Pavilion",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2000s-04.jpg",
+      artist: "Animal Collective",
+      category: "Pop",
+      year: 2009,
+      rating: 8.1
+    },
+    {
+      name: "Merriweather Post Pavilion",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2000s-04.jpg",
+      artist: "Animal Collective",
+      category: "Pop",
+      year: 2009,
+      rating: 8.1
+    },
+    {
+      name: "Random Access Memories",
+      image: "https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2010s-49.jpg",
+      artist: "Daft Punk",
+      category: "Pop",
+      year: 2013,
       rating: 8.1
     }
   ];
