@@ -5,7 +5,7 @@ const albumCovers = [
       artist: "Pink Floyd",
       category: "Rock",
       year: 1973,
-      rating: 8.0
+      rating: 9.8
     },
     {
       name: "The Velvet Underground & Nico",
@@ -13,7 +13,7 @@ const albumCovers = [
       artist: "The Velvet Underground",
       category: "Rock",
       year: 1967,
-      rating: 8.8
+      rating: 8.4
     },
     {
       name: "To Pimp a Butterfly",
@@ -21,7 +21,7 @@ const albumCovers = [
       artist: "Kendrick Lamar",
       category: "Hip-Hop",
       year: 2015,
-      rating: 7.1
+      rating: 8.7
     },
     {
       name: "Stankonia",
@@ -29,7 +29,7 @@ const albumCovers = [
       artist: "Outkast",
       category: "Hip-Hop",
       year: 2000,
-      rating: 8.1
+      rating: 8.7
     },
     {
       name: "Rumours",
@@ -37,7 +37,7 @@ const albumCovers = [
       artist: "Fleetwood Mac",
       category: "Rock",
       year: 1977,
-      rating: 8.1
+      rating: 9.4
     },
     {
       name: "SOS",
@@ -45,7 +45,7 @@ const albumCovers = [
       artist: "SZA",
       category: "R&B",
       year: 2022,
-      rating: 8.1
+      rating: 7.1
     },
     {
       name: "The Rise and Fall of Ziggy Stardust and the Spiders From Mars",
@@ -53,7 +53,7 @@ const albumCovers = [
       artist: "David Bowie",
       category: "Rock",
       year: 1972,
-      rating: 8.1
+      rating: 9.7
     },
     {
       name: "The College Dropout",
@@ -61,7 +61,7 @@ const albumCovers = [
       artist: "Kanye West",
       category: "Hip-Hop",
       year: 2004,
-      rating: 8.1
+      rating: 8.5
     },
     {
       name: "Channel Orange",
@@ -69,7 +69,7 @@ const albumCovers = [
       artist: "Frank Ocean",
       category: "R&B",
       year: 2012,
-      rating: 8.1
+      rating: 8.9
     },
     {
       name: "What's Going On",
@@ -77,7 +77,7 @@ const albumCovers = [
       artist: "Marvin Gaye",
       category: "R&B",
       year: 1971,
-      rating: 8.1
+      rating: 9.7
     },
     {
       name: "In the Court of the Crimson King",
@@ -85,7 +85,7 @@ const albumCovers = [
       artist: "King Crimson",
       category: "Rock",
       year: 1969,
-      rating: 8.1
+      rating: 10.0
     },
     {
       name: "Currents",
@@ -93,7 +93,7 @@ const albumCovers = [
       artist: "Tame Impala",
       category: "Pop",
       year: 2015,
-      rating: 8.1
+      rating: 6.6
     },
     {
       name: "Lemonade",
@@ -101,7 +101,7 @@ const albumCovers = [
       artist: "Beyoncé",
       category: "R&B",
       year: 2016,
-      rating: 8.1
+      rating: 7.3
     },
     {
       name: "Igor",
@@ -117,7 +117,7 @@ const albumCovers = [
       artist: "The White Stripes",
       category: "Rock",
       year: 2003,
-      rating: 8.1
+      rating: 8.2
     },
     {
       name: "1989",
@@ -125,7 +125,7 @@ const albumCovers = [
       artist: "Taylor Swift",
       category: "Pop",
       year: 2000,
-      rating: 8.1
+      rating: 7.8
     },
     {
       name: "Abbey Road",
@@ -133,7 +133,7 @@ const albumCovers = [
       artist: "The Beatles",
       category: "Rock",
       year: 1969,
-      rating: 8.1
+      rating: 10.0
     },
     {
       name: "Post",
@@ -141,7 +141,7 @@ const albumCovers = [
       artist: "Björk",
       category: "Pop",
       year: 1995,
-      rating: 8.1
+      rating: 8.0
     },
     {
       name: "Californication",
@@ -149,7 +149,7 @@ const albumCovers = [
       artist: "Red Hot Chili Peppers",
       category: "Rock",
       year: 1999,
-      rating: 8.1
+      rating: 7.9
     },
     {
       name: "In Utero",
@@ -157,7 +157,7 @@ const albumCovers = [
       artist: "Nirvana",
       category: "Rock",
       year: 1993,
-      rating: 8.1
+      rating: 8.5
     },
     {
       name: "Merriweather Post Pavilion",
@@ -165,7 +165,7 @@ const albumCovers = [
       artist: "Animal Collective",
       category: "Pop",
       year: 2009,
-      rating: 8.1
+      rating: 7.5
     },
     {
       name: "Speaking in Tongue",
@@ -173,7 +173,7 @@ const albumCovers = [
       artist: "Talking Heads",
       category: "Rock",
       year: 1983,
-      rating: 8.1
+      rating: 8.8
     },
     {
       name: "Ok Computer",
@@ -181,7 +181,15 @@ const albumCovers = [
       artist: "Radiohead",
       category: "Rock",
       year: 1997,
-      rating: 8.1
+      rating: 9.1
+    },
+    {
+      name: "Pet Sounds",
+      image: "https://upload.wikimedia.org/wikipedia/en/b/bb/PetSoundsCover.jpg",
+      artist: "Beach Boys",
+      category: "Pop",
+      year: 1966,
+      rating: 9.6
     },
     {
       name: "Random Access Memories",
@@ -190,6 +198,54 @@ const albumCovers = [
       category: "Pop",
       year: 2013,
       rating: 8.1
+    },
+    {
+      name: "Sticky Fingers",
+      image: "https://upload.wikimedia.org/wikipedia/en/5/57/The_Rolling_Stones_-_Sticky_Fingers.png",
+      artist: "Rolling Stones",
+      category: "Rock",
+      year: 1971,
+      rating: 9.6
+    },
+    {
+      name: "The Big Day",
+      image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Chance_the_Rapper_-_The_Big_Day.png",
+      artist: "Chance the Rapper",
+      category: "Hip-Hop",
+      year: 2013,
+      rating: 3.0
+    },
+    {
+      name: "Bad",
+      image: "https://cdn-p.smehost.net/sites/28d35d54a3c64e2b851790a18a1c4c18/wp-content/uploads/2017/04/19870831_bad_album.jpg",
+      artist: "Michael Jackson",
+      category: "Pop",
+      year: 1987,
+      rating: 9.2
+    },
+    {
+      name: "Songs in the Key of Life",
+      image: "https://upload.wikimedia.org/wikipedia/en/e/e2/Songs_in_the_key_of_life.jpg",
+      artist: "Stevie Wonder",
+      category: "Hip-Hop",
+      year: 1976,
+      rating: 9.8
+    },
+    {
+      name: "Transformer",
+      image: "https://upload.wikimedia.org/wikipedia/en/f/f1/Loureedtransformer.jpeg",
+      artist: "Lou Reed",
+      category: "Hip-Hop",
+      year: 1972,
+      rating: 9.3
+    },
+    {
+      name: "Highway 61 Revisited",
+      image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Chance_the_Rapper_-_The_Big_Day.png",
+      artist: "Bob Dylan",
+      category: "Rock",
+      year: 1965,
+      rating: 9.7
     }
   ];
   
