@@ -241,7 +241,7 @@ const albumCovers = [
     },
     {
       name: "Highway 61 Revisited",
-      image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Chance_the_Rapper_-_The_Big_Day.png",
+      image: "https://upload.wikimedia.org/wikipedia/en/9/95/Bob_Dylan_-_Highway_61_Revisited.jpg",
       artist: "Bob Dylan",
       category: "Rock",
       year: 1965,
