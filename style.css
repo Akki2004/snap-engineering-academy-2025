@@ -2,13 +2,13 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Verdana", sans-serif;
   background-color: #f8f8f8;
 }
 
 /* Header */
 .main-header {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(208, 99, 255, 0.845);
   padding: 20px 0;
 }
 
@@ -17,7 +17,7 @@ body {
   margin: 0;
   font-size: 4em;
   font-weight: normal;
-  color: white;
+  color: rgb(235, 235, 235);
 }
 
 /* Controls */
