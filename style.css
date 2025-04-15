@@ -18,15 +18,7 @@ body {
   font-size: 4em;
   font-weight: normal;
   color: rgb(255, 255, 255);
-  text-shadow:
-    -3px -3px 0 #000,
-     3px -3px 0 #000,
-    -3px  3px 0 #000,
-     3px  3px 0 #000,
-    -3px  0px 0 #000,
-     3px  0px 0 #000,
-     0px -3px 0 #000,
-     0px  3px 0 #000;
+  -webkit-text-stroke: 5px black;
 }
 
 /* Controls */
